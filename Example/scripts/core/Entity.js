@@ -18,12 +18,11 @@ class Entity
         this.sprite.style.top = this.y + "px";
 
         document.body.appendChild(this.sprite);
-        
+
         this.animating = false;
         this.currentFrame = 0;
         this.animation = new Array();
-        this.frameCount = 0;
-        this.frameDelay = 0;        
+        this.frameDelay = 0;
     }
 
     getX() { return this.x; }
@@ -74,53 +73,54 @@ class Entity
 	{
 		document.body.addEventListener(triggeredEvent, callback);
 	}
-	
+
 	removeEventListener(triggeredEvent, callback)
 	{
 		document.body.removeEventListener(triggeredEvent, callback);
 	}
 
-	animate(imageArray, frameCount, frameDelay, force = false)
+	animate(imageArray, frameDelay, force = false)
 	{
 		if(!this.animating || force)
 		{
 			this.animating = true;
 			this.currentFrame = 0;
 			this.animation = imageArray;
-			this.frameCount = frameCount;
 			this.frameDelay = frameDelay;
-		
-			this.doAnimation();
+
+			this.doAnimation(this);
 		}
 	}
-	
-	doAnimation()
+
+	doAnimation(target = this)
     {
-      	this.setSprite(this.animation[this.currentFrame]);
-      	this.currentFrame = 1;
-      	
-      	if(this.animating)
+      	if(target.animating)
       	{
-       		setTimeout(this.doAnimation, this.frameDelay);
+            target.setSprite(target.animation[target.currentFrame]);
+
+            target.currentFrame++;
+            if(target.currentFrame >= target.animation.length){ target.currentFrame = 0; }
+
+       		setTimeout(target.doAnimation, target.frameDelay, target);
       	}
     }
-	
+
 	stopAnimation()
 	{
 		this.animating = false;
 	}
-	
+
 	continueAnimation()
 	{
 		this.animating = true;
-		this.doAnimation();
+		this.doAnimation(this);
 	}
-	
+
 	restartAnimation()
 	{
 		this.animating = true;
 		this.currentFrame = 0;
-		this.doAnimation();
+		this.doAnimation(this);
 	}
 
     update() { }
