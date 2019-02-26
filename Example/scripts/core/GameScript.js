@@ -13,7 +13,8 @@ class Game
         document.body.style.width = "100%";
         document.body.style.height = "100%";
 
-        Game.setBackground(background);
+        new Layer("background", background, true, -1).addToGame();
+
 
         init();
         loopForEver(update);
@@ -21,8 +22,7 @@ class Game
 
     static setBackground(background)
     {
-        document.body.style.background = "url(" + background + ") no-repeat center center fixed";
-        document.body.style.backgroundSize = "cover";
+        document.getElementById("background").src = background;
     }
 
     static getGameWidth()

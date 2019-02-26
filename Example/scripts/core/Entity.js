@@ -1,21 +1,25 @@
 class Entity
 {
-    constructor(x = 0, y = 0, width = 0, height = 0, image = "")
+    constructor(x = 0, y = 0, width = 0, height = 0, image = "", visible = true, depth = 9999)
     {
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
 
-        this.visible = true;
+        this.visible = visible;
+        this.depth = depth;
 
         this.sprite = document.createElement("img");
+        this.sprite.classList.add("entity");
         this.sprite.src = image;
         this.sprite.width = width;
         this.sprite.height = height;
         this.sprite.style.position = "absolute";
         this.sprite.style.left = this.x + "px";
         this.sprite.style.top = this.y + "px";
+        this.sprite.style.zIndex = depth;
+        this.sprite.style.display = this.visible ? "block" : "none";
 
         document.body.appendChild(this.sprite);
 
@@ -43,9 +47,22 @@ class Entity
         this.setY(this.getY() + moveY);
     }
 
-    setSprite(image)
+    setSprite(image) { this.sprite.src = image; }
+
+    getDepth()
     {
-    	this.sprite.src = image;
+        return this.depth;
+    }
+
+    setDepth(depth)
+    {
+        this.depth = depth;
+        this.sprite.style.zIndex = depth;
+    }
+
+    isVisible()
+    {
+        return this.visible;
     }
 
     setVisible(visible)
