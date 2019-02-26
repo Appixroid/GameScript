@@ -71,7 +71,7 @@ function playerUpdate()
 
 function init()
 {
-    player = new Player(getGameWidth()/2, getGameHeight()/2, 64, 64, "assets/player_down_idle.png");
+    player = new Player(Game.getGameWidth()/2, Game.getGameHeight()/2, 64, 64, "assets/player_down_idle.png");
 
     player.addEventListener("keydown", playerMove);
 	player.addEventListener("keyup", playerStop);
@@ -83,4 +83,4 @@ function update()
     player.update();
 }
 
-newGame("Test", init, update, "assets/map.png");
+Game.newGame("Test", init, update, "assets/map.png");

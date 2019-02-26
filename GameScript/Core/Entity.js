@@ -18,6 +18,11 @@ class Entity
         this.sprite.style.top = this.y + "px";
 
         document.body.appendChild(this.sprite);
+
+        this.animating = false;
+        this.currentFrame = 0;
+        this.animation = new Array();
+        this.frameDelay = 0;
     }
 
     getX() { return this.x; }
@@ -40,7 +45,7 @@ class Entity
 
     setSprite(image)
     {
-        this.sprite.src = image;
+    	this.sprite.src = image;
     }
 
     setVisible(visible)
@@ -59,19 +64,63 @@ class Entity
         return this.x < entity.x + entity.width && this.x + this.width > entity.x && this.y < entity.y + entity.height && this.y + this.height > entity.y;
     }
 
-    isOutOfScreen()
+    isOutOfGameWindow()
     {
-        return this.x + this.width < 0 || this.x > window.innerWidth || this.y + this.height < 0 || this.y > window.innerHeight;
+        return this.x + this.width < 0 || this.x > getGameWidth() || this.y + this.height < 0 || this.y > getGameHeight();
     }
 
 	addEventListener(triggeredEvent, callback)
 	{
 		document.body.addEventListener(triggeredEvent, callback);
 	}
-	
+
 	removeEventListener(triggeredEvent, callback)
 	{
 		document.body.removeEventListener(triggeredEvent, callback);
+	}
+
+	animate(imageArray, frameDelay, force = false)
+	{
+		if(!this.animating || force)
+		{
+			this.animating = true;
+			this.currentFrame = 0;
+			this.animation = imageArray;
+			this.frameDelay = frameDelay;
+
+			this.doAnimation(this);
+		}
+	}
+
+	doAnimation(target = this)
+    {
+      	if(target.animating)
+      	{
+            target.setSprite(target.animation[target.currentFrame]);
+
+            target.currentFrame++;
+            if(target.currentFrame >= target.animation.length){ target.currentFrame = 0; }
+
+       		setTimeout(target.doAnimation, target.frameDelay, target);
+      	}
+    }
+
+	stopAnimation()
+	{
+		this.animating = false;
+	}
+
+	continueAnimation()
+	{
+		this.animating = true;
+		this.doAnimation(this);
+	}
+
+	restartAnimation()
+	{
+		this.animating = true;
+		this.currentFrame = 0;
+		this.doAnimation(this);
 	}
 
     update() { }
