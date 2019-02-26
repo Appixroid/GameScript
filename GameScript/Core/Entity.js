@@ -64,5 +64,15 @@ class Entity
         return this.x + this.width < 0 || this.x > window.innerWidth || this.y + this.height < 0 || this.y > window.innerHeight;
     }
 
+	addEventListener(triggeredEvent, callback)
+	{
+		document.body.addEventListener(triggeredEvent, callback);
+	}
+	
+	removeEventListener(triggeredEvent, callback)
+	{
+		document.body.removeEventListener(triggeredEvent, callback);
+	}
+
     update() { }
 }
