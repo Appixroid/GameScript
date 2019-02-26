@@ -22,3 +22,13 @@ function setBackground(background)
     document.body.style.background = "url(" + background + ") no-repeat center center fixed";
     document.body.style.backgroundSize = "cover";
 }
+
+function getGameWidth()
+{
+	return window.innerWidth;
+}
+
+function getGameHeight()
+{
+	return window.innerHeight;
+}

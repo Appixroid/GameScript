@@ -4,6 +4,12 @@ class Player extends Entity
 	{
 		super(x, y, width, height, image);
 		
-		this.speed = 0;
+		this.speedX = 0;
+		this.speedY = 0;
+	}
+	
+	static moveSpeed()
+	{ 
+		return 5; 
 	}
 }
