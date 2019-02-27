@@ -1,6 +1,6 @@
 class TexturedEntity extends DisplayedEntity
 {
-    constructor(x = 0, y = 0, width = 0, height = 0, image = "", visible = true, depth = 9999)
+    constructor(x = 0, y = 0, width = 0, height = 0, image = "", visible = true, depth = 0)
     {
     	super(x, y, width, height, visible, depth);
         

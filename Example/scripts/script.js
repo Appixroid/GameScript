@@ -1,4 +1,5 @@
 var player;
+var title;
 
 function playerMove(e)
 {
@@ -77,13 +78,15 @@ function playerUpdate()
 
 function init()
 {
-    player = new Player(Math.floor(Game.getGameWidth()/2), Math.floor(Game.getGameHeight()/2), 64, 64, "assets/player_down_idle.png");
+    player = new Player(Math.floor(Game.getGameWidth()/2), Math.floor(Game.getGameHeight()/2), 64, 64, "assets/player_down_idle.png", true, 0);
 
     player.addEventListener("keydown", playerMove);
 	player.addEventListener("keyup", playerStop);
 	player.update = playerUpdate;
 
 	Layers.createLayer("collision", "assets/collision_mask.png", true, false);
+	
+	title = new Label("<center><strong><big>GameScript</big></strong></center>", (Game.getGameWidth() / 2) - ((Game.getGameWidth() * 0.33) / 2), 5, (Game.getGameWidth() * 0.33), 20, true, 9999);
 }
 
 function update()
