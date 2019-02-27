@@ -13,7 +13,7 @@ class Game
         document.body.style.width = "100%";
         document.body.style.height = "100%";
 
-        new Layer("background", background, true, -1).addToGame();
+        new Layer("background", background, true, true, -1).addToGame();
 
 
         init();

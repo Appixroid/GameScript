@@ -2,9 +2,9 @@ var layers = new Array();
 
 class Layers
 {
-    static createLayer(name, layerImage = "", visible = true, depth = 0)
+    static createLayer(name, layerImage = "", fullSize = false, visible = true, depth = 0)
     {
-        let layer = new Layer(name, layerImage, visible, depth);
+        let layer = new Layer(name, layerImage, fullSize, visible, depth);
         layers.push(layer);
         layer.addToGame();
     }
@@ -26,9 +26,10 @@ class Layers
 
 class Layer
 {
-    constructor(name, layerImage = "", visible = true, depth = 0)
+    constructor(name, layerImage = "", fullSize = false, visible = true, depth = 0)
     {
         this.name = name;
+        this.fullSize = fullSize;
         this.visible = visible;
         this.depth = depth;
 
@@ -43,8 +44,10 @@ class Layer
         this.layer.style.left = "0";
         this.layer.style.bottom = "0";
         this.layer.style.right = "0";
-        this.layer.style.width = "100%";
-        this.layer.style.height = "100%";
+        
+        this.layer.style.width = (fullSize ? "100%" : "auto");
+		this.layer.style.height = (fullSize ? "100%" : "auto");
+        
         this.layer.style.zIndex = (visible ? this.depth : -9999);
     }
 
@@ -76,6 +79,18 @@ class Layer
     {
         this.layer.src = layerImage;
     }
+
+	isFullSize()
+	{
+		return this.fullSize;
+	}
+
+	setFullSize(fullSize)
+	{
+		this.fullSize = fullSize;
+		this.layer.style.width = (fullSize ? "100%" : "auto");
+		this.layer.style.height = (fullSize ? "100%" : "auto");
+	}
 
     getName() { return this.name; }
 

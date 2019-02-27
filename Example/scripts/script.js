@@ -67,11 +67,7 @@ function playerUpdate()
 {
 	if(player.isMoving())
 	{
-		if(Layers.getLayer("collision").getPixel(Math.floor(player.x + (player.width / 2) + player.speedX), Math.floor(player.y + (player.height / 2) + player.speedY))[3] == 255)
-		{
-
-		}
-		else
+		if(Layers.getLayer("collision").getPixel(Math.floor(player.x + (player.width / 2) + player.speedX), Math.floor(player.y + (player.height / 2) + player.speedY))[3] != 255)
 		{
 			player.move(player.speedX, player.speedY);
 		}
@@ -87,7 +83,7 @@ function init()
 	player.addEventListener("keyup", playerStop);
 	player.update = playerUpdate;
 
-	Layers.createLayer("collision", "assets/collision_mask.png", false);
+	Layers.createLayer("collision", "assets/collision_mask.png", true, false);
 }
 
 function update()
