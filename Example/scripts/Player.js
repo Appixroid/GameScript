@@ -1,4 +1,4 @@
-class Player extends Entity
+class Player extends TexturedEntity
 {
 	constructor(x = 0, y = 0, width = 0, height = 0, image = "")
 	{
