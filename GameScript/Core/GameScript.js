@@ -1,3 +1,13 @@
+/***
+ ********************************************************
+ ** Base Script of GameScript with the general Game class
+ **
+ ********************************************************
+ **/
+
+/**
+ * Loop for ever over action() with a call every 17ms (~60 call per seconds)
+ */
 function loopForEver(action)
 {
     action();
