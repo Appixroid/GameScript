@@ -32,29 +32,29 @@ function playerMove(e)
 	}
 }
 
-function playerStop(e, force = false)
+function playerStop()
 {
 	if(player.isMoving())
 	{
-		if(force || e.code == "ArrowLeft")
+		if(player.speedX < 0)
 		{
 			player.speedX = 0;
 			player.stopAnimation();
 			player.setSprite("assets/player_left_idle.png");
 		}
-		if(force || e.code == "ArrowRight")
+		else if(player.speedX > 0)
 		{
 			player.speedX = 0;
 			player.stopAnimation();
 			player.setSprite("assets/player_right_idle.png");
 		}
-		if(force || e.code == "ArrowUp")
+		else if(player.speedY < 0)
 		{
 			player.speedY = 0;
 			player.stopAnimation();
 			player.setSprite("assets/player_up_idle.png");
 		}
-		if(force || e.code == "ArrowDown")
+		else if(player.speedY > 0)
 		{
 			player.speedY = 0;
 			player.stopAnimation();
@@ -67,7 +67,19 @@ function playerUpdate()
 {
 	if(Layers.getLayer("collision").getPixel(Math.floor(player.x + player.speedX), Math.floor(player.y + player.speedY))[3] == 255)
 	{
-		playerStop(null, true);
+		playerStop(null);
+	}
+	else if(Layers.getLayer("collision").getPixel(Math.floor(player.x + player.width + player.speedX), Math.floor(player.y + player.speedY))[3] == 255)
+	{
+	
+	}
+	else if(Layers.getLayer("collision").getPixel(Math.floor(player.x + player.speedX), Math.floor(player.y + player.height + player.speedY))[3] == 255)
+	{
+	
+	}
+	else if(Layers.getLayer("collision").getPixel(Math.floor(player.x + player.width + player.speedX), Math.floor(player.y + player.height + player.speedY))[3] == 255)
+	{
+	
 	}
 	else
 	{
