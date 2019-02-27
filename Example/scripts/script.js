@@ -65,25 +65,16 @@ function playerStop()
 
 function playerUpdate()
 {
-	if(Layers.getLayer("collision").getPixel(Math.floor(player.x + player.speedX), Math.floor(player.y + player.speedY))[3] == 255)
+	if(player.isMoving())
 	{
-		playerStop(null);
-	}
-	else if(Layers.getLayer("collision").getPixel(Math.floor(player.x + player.width + player.speedX), Math.floor(player.y + player.speedY))[3] == 255)
-	{
-	
-	}
-	else if(Layers.getLayer("collision").getPixel(Math.floor(player.x + player.speedX), Math.floor(player.y + player.height + player.speedY))[3] == 255)
-	{
-	
-	}
-	else if(Layers.getLayer("collision").getPixel(Math.floor(player.x + player.width + player.speedX), Math.floor(player.y + player.height + player.speedY))[3] == 255)
-	{
-	
-	}
-	else
-	{
-		player.move(player.speedX, player.speedY);
+		if(Layers.getLayer("collision").getPixel(Math.floor(player.x + (player.width / 2) + player.speedX), Math.floor(player.y + (player.height / 2) + player.speedY))[3] == 255)
+		{
+
+		}
+		else
+		{
+			player.move(player.speedX, player.speedY);
+		}
 	}
 }
 

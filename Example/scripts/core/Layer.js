@@ -86,11 +86,13 @@ class Layer
     }
 
     getPixel(x, y)
-    {
-        let canvas = document.createElement('canvas');
-        canvas.width = this.layer.width;
-        canvas.height = this.layer.height;
-        canvas.getContext('2d').drawImage(this.layer, 0, 0, this.layer.width, this.layer.height);
-        return canvas.getContext('2d').getImageData(x, y, 1, 1).data;
+    {  	
+		let canvas = document.createElement('canvas');
+		canvas.width = this.layer.width;
+		canvas.height = this.layer.height;
+		this.context = canvas.getContext("2d");
+       	canvas.getContext("2d").drawImage(this.layer, 0, 0, this.layer.width, this.layer.height);
+       	
+        return canvas.getContext("2d").getImageData(x, y, 1, 1).data;
     }
 }
