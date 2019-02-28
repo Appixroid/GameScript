@@ -72,6 +72,9 @@ class Layer
         this.layer.style.left = "0";
         this.layer.style.bottom = "0";
         this.layer.style.right = "0";
+        
+        this.width = "auto";
+        this.height = "auto";
 
         this.layer.style.width = (fullSize ? "100%" : "auto");
 		this.layer.style.height = (fullSize ? "100%" : "auto");
@@ -140,9 +143,78 @@ class Layer
 	setFullSize(fullSize)
 	{
 		this.fullSize = fullSize;
-		this.layer.style.width = (fullSize ? "100%" : "auto");
-		this.layer.style.height = (fullSize ? "100%" : "auto");
+		this.layer.style.width = (fullSize ? "100%" : (this.width == "auto" ? this.width : this.width + "px"));
+		this.layer.style.height = (fullSize ? "100%" : (this.height == "auto" ? this.height : this.height + "px"));
 	}
+	
+	/**
+	 * Return the width of the layer
+	 */
+	getWidth() { return this.width; }
+	/**
+	 * Reset the height to auto
+	 */
+	resetWidth()
+	{
+		this.width = "auto";
+		if(!this.isFullSize())
+		{
+			this.layer.style.width = this.width;
+		}
+	}
+	/**
+	 * Change the width of the layer
+	 */
+	setWidth(newWidth)
+	{
+		this.width = newWidth;
+		if(!this.isFullSize())
+		{
+			this.layer.style.width = this.width + "px";
+		}
+	}
+	
+	/**
+	 * Return the height of the layer
+	 */
+	getHeight() { return this.height; }
+	/**
+	 * Reset the height to auto
+	 */
+	resetHeight()
+	{
+		this.height = "auto";
+		if(!this.isFullSize())
+		{
+			this.layer.style.height = this.height;
+		}
+	}
+	/**
+	 * Change the height of the layer
+	 */
+	setHeight(newHeight)
+	{
+		this.height = newHeight;
+		if(!this.isFullSize())
+		{
+			this.layer.style.height = this.height + "px";
+		}
+	}
+	
+	/**
+	 * Scale the layer in percent of game view size
+	 */
+	 scale(percent)
+	 {
+	 	this.width = (Game.getGameWidth() * (percent / 100));
+	 	this.height = (Game.getGameHeight() * (percent / 100));
+	 	
+	 	if(!this.isFullSize())
+		{
+			this.layer.style.height = this.height + "px";
+			this.layer.style.width = this.width + "px";
+		}
+	 }
 
     /**
      * Return the name of the layer
