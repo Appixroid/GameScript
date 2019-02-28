@@ -1,3 +1,4 @@
+var camera;
 var player;
 var title;
 
@@ -83,8 +84,11 @@ function init()
     player.addEventListener("keydown", playerMove);
 	player.addEventListener("keyup", playerStop);
 	player.update = playerUpdate;
+	
+	camera = new FixedCamera(player);
 
-	Layers.createLayer("collision", "assets/collision_mask.png", true, false);
+	Layers.createLayer("collision", "assets/collision_mask.png", false, false);
+	Layers.createLayer("map", "assets/map.png", false, true, -1);
 	
 	title = new Label("<center><strong><big>GameScript</big></strong></center>", (Game.getGameWidth() / 2) - ((Game.getGameWidth() * 0.33) / 2), 5, (Game.getGameWidth() * 0.33), 20, true, 9999);
 }
@@ -92,6 +96,7 @@ function init()
 function update()
 {
     player.update();
+    camera.update();
 }
 
-Game.newGame("Test", init, update, "assets/map.png");
+Game.newGame("Test", init, update);

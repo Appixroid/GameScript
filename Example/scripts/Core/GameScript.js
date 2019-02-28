@@ -27,8 +27,12 @@ class Game
     {
         document.title = name;
         document.body.style.overflow = "hidden";
+        document.body.style.margin = "0";
         document.body.style.width = "100%";
         document.body.style.height = "100%";
+        document.body.style.position = "absolute";
+        document.body.style.left = "0px";
+        document.body.style.top = "0px";
 
         new Layer("background", background, true, true, -1).addToGame();
 
