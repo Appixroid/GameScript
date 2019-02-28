@@ -85,18 +85,20 @@ function init()
 	player.addEventListener("keyup", playerStop);
 	player.update = playerUpdate;
 	
+	title = new Label("<i>George</i>", player.getX(), player.getY()-33, 125, 33, true, 1);
+	
 	camera = new FixedCamera(player);
 
 	Layers.createLayer("collision", "assets/collision_mask.png", false, false);
 	Layers.createLayer("map", "assets/map.png", false, true, -1);
-	
-	title = new Label("<center><strong><big>GameScript</big></strong></center>", (Game.getGameWidth() / 2) - ((Game.getGameWidth() * 0.33) / 2), 5, (Game.getGameWidth() * 0.33), 20, true, 9999);
 }
 
 function update()
 {
     player.update();
     camera.update();
+    title.setX(player.getX());
+    title.setY(player.getY()-title.getHeight());
 }
 
 Game.newGame("Test", init, update);
