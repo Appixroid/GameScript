@@ -18,8 +18,8 @@ class FixedCamera extends Camera
 	 */
 	update()
 	{
-		this.setOriginX(this.entity.getX());
-		this.setOriginY(this.entity.getY());
+		this.setOriginX(this.entity.getX() + (this.entity.getWidth() / 2));
+		this.setOriginY(this.entity.getY() + (this.entity.getHeight() / 2));
 		
 		super.update();	
 	}

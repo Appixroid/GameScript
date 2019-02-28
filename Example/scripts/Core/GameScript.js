@@ -34,8 +34,10 @@ class Game
         document.body.style.left = "0px";
         document.body.style.top = "0px";
 
-        new Layer("background", background, true, true, -1).addToGame();
-
+        if(background !== "")
+        {
+            new Layer("background", background, true, true, -1).addToGame();
+        }
 
         init();
         loopForEver(update);
