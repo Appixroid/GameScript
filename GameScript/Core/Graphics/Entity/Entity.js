@@ -24,6 +24,10 @@ class Entity
         this.depth = depth;
     }
 
+    destructor()
+    {
+    }
+
     /**
      * Return the x coordinate of the entity
      */

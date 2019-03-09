@@ -19,6 +19,11 @@ class DisplayedEntity extends Entity
         this.dom = null;
     }
 
+    destructor()
+    {
+        document.body.removeChild(this.dom);
+    }
+
     /**
      * Change the x coordinate of the entity
      */
