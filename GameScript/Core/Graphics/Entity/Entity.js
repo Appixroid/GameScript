@@ -24,6 +24,9 @@ class Entity
         this.depth = depth;
     }
 
+    /**
+     * Destroy the entity
+     */
     destructor()
     {
     }

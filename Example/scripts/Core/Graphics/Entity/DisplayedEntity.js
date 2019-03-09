@@ -19,6 +19,9 @@ class DisplayedEntity extends Entity
         this.dom = null;
     }
 
+    /**
+     * Destroy the entity
+     */
     destructor()
     {
         document.body.removeChild(this.dom);
