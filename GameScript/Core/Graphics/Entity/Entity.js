@@ -20,6 +20,8 @@ class Entity
         this.width = width;
         this.height = height;
 
+        this.angle = 0;
+
         this.visible = visible;
         this.depth = depth;
     }
@@ -92,6 +94,30 @@ class Entity
     {
         this.setX(this.getX() + moveX);
         this.setY(this.getY() + moveY);
+    }
+
+    /**
+     * Retrieve the angle in degree of the entity
+     */
+    getAngle()
+    {
+        return this.angle;
+    }
+
+    /**
+     * Rotate the entity with angle in degree
+     */
+    rotate(angle)
+    {
+        this.angle = angle;
+    }
+
+    /**
+     * Rotate the entity with angle in radian
+     */
+    rotateRad(angle)
+    {
+        rotate(angle * 57.295779513082);
     }
 
     /**

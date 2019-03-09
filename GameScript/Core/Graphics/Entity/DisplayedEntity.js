@@ -62,6 +62,15 @@ class DisplayedEntity extends Entity
     }
 
     /**
+     * Rotate the entity with angle in degree
+     */
+    rotate(angle)
+    {
+        super.rotate(angle);
+        this.dom.style.transform = "rotate(" + this.angle + "deg)";
+    }
+
+    /**
      * Change the visibility of the entity
      */
     setVisible(visible)
