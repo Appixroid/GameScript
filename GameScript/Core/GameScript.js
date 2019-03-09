@@ -83,3 +83,8 @@ class Game
 		document.body.removeEventListener(triggeredEvent, callback);
 	}
 }
+
+/**
+ * Alias classes for Game generic functions
+ */
+class GameEngine extends Game {}
