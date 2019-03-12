@@ -65,17 +65,6 @@ function playerStop()
 	}
 }
 
-function playerUpdate()
-{
-	if(player.isMoving())
-	{
-		if(Layers.getLayer("collision").getPixel(Math.floor(player.x + (player.width / 2) + player.speedX), Math.floor(player.y + (player.height / 2) + player.speedY))[3] != 255)
-		{
-			player.move(player.speedX, player.speedY);
-		}
-	}
-}
-
 
 function init()
 {
@@ -83,7 +72,6 @@ function init()
 
     player.addEventListener("keydown", playerMove);
 	player.addEventListener("keyup", playerStop);
-	player.update = playerUpdate;
 	
 	title = new Label("<i>George</i>", player.getX(), player.getY()-33, 125, 33, true, 1);
 	
