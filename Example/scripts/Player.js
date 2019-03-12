@@ -1,8 +1,8 @@
 class Player extends TexturedEntity
 {
-	constructor()
+	constructor(owningState)
 	{
-		super(Math.floor(Game.getGameWidth()/2), Math.floor(Game.getGameHeight()/2), 64, 64, "assets/player_down_idle.png", true, 0);
+		super(owningState, Math.floor(Game.getGameWidth()/2), Math.floor(Game.getGameHeight()/2), 64, 64, "assets/player_down_idle.png", true, 0);
 
 		this.speedX = 0;
 		this.speedY = 0;
