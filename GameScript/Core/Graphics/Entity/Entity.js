@@ -170,7 +170,7 @@ class Entity
      */
 	addEventListener(triggeredEvent, callback)
 	{
-		document.body.addEventListener(triggeredEvent, callback);
+		document.body.addEventListener(triggeredEvent, callback.bind(this));
 	}
 
     /**
