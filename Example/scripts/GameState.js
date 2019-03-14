@@ -13,7 +13,7 @@ class GameState extends BasicState
 	{
 		player = new Player(this);
 	
-		title = new Label("<i>George</i>", this, player.getX(), player.getY()-33, 125, 33, true, 1);
+		title = new Label(this, "<i>George</i>", player.getX(), player.getY()-33, 125, 33, true, 1);
 	
 		camera = new FixedCamera(player);
 
