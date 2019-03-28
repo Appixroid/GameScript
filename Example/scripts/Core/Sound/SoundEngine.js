@@ -40,7 +40,7 @@ class SoundEngine
     static loopSound(name)
     {
         sounds[name].loop = true;
-        playSound(name);
+        SoundEngine.playSound(name);
     }
 
     /**
@@ -49,7 +49,7 @@ class SoundEngine
      */
     static pauseSound(name)
     {
-        sound[name].pause();
+        sounds[name].pause();
     }
 
     /**
@@ -59,7 +59,7 @@ class SoundEngine
     static stopSound(name)
     {
         sounds[name].loop = false;
-        pauseSound();
+        SoundEngine.pauseSound();
     }
 
     /**
@@ -67,8 +67,8 @@ class SoundEngine
      */
     static restartSound(name)
     {
-        resetSound(name);
-        playSound(name);
+        SoundEngine.resetSound(name);
+        SoundEngine.playSound(name);
     }
 
     /**
@@ -76,8 +76,8 @@ class SoundEngine
      */
     static restartLoopSound(name)
     {
-        resetSound(name);
-        loopSound(name);
+        SoundEngine.resetSound(name);
+        SoundEngine.loopSound(name);
     }
 
     /**
